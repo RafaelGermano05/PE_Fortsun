@@ -3,17 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PE Fortsun</title>
+    <title>Login - Acesso ao Relatório BI</title>
     <link rel="shortcut icon" href="logofortsun.jpg" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+        }
+
+        .login-container h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .login-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .login-container button:hover {
+            background-color: #0056b3;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .iframe-container {
+            display: none; /* Inicialmente oculto */
+            width: 100%;
+            height: 100vh;
+            margin-top: 20px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
 </head>
 <body>
-    <iframe 
-        src="https://app.powerbi.com/view?r=eyJrIjoiYjcxNDgxYjQtNzJiZi00MTRiLTg4ZDMtODEyOTgxMzE1ZmE3IiwidCI6IjFiOGQ2YmQ5LTBhNDgtNDJhNy1iZTgyLTk3MTg5NDY1MDAzMCJ9" 
-        frameborder="0" 
-        allowfullscreen 
-        class="powerbi-frame">
-    </iframe> 
-    <!-- cada coisa né pvt -->
+    <div class="login-container">
+        <h1>Acesso ao Relatório BI</h1>
+        <input type="text" id="username" placeholder="Nome de usuário" required>
+        <input type="password" id="password" placeholder="Senha" required>
+        <button onclick="login()">Entrar</button>
+        <div id="error-message" class="error-message">Usuário ou senha incorretos.</div>
+    </div>
+
+    <div class="iframe-container" id="iframe-container">
+        <iframe id="bi-iframe" src="" allowfullscreen></iframe>
+    </div>
+
+    <script>
+        const validUsers = [
+            "Rafael", "Daniel", "Aline", "Dougllas", "Tomaz", "Sarah", 
+            "Linaldo", "Kesse", "Rozelia", "Aldenir", "Pedro", "Gabriel", 
+            "Thiago", "Thiago.Correa", "Guilherme"
+        ];
+        const validPassword = "123456";
+
+        function login() {
+            const username = document.getElementById("username").value.trim();
+            const password = document.getElementById("password").value.trim();
+            const errorMessage = document.getElementById("error-message");
+            const iframeContainer = document.getElementById("iframe-container");
+            const biIframe = document.getElementById("bi-iframe");
+
+            if (validUsers.includes(username) && password === validPassword) {
+                // Registra o acesso no Google Sheets
+                registerAccess(username);
+                // Exibe o iframe com o relatório BI
+                iframeContainer.style.display = "block";
+                biIframe.src = "https://app.powerbi.com/view?r=eyJrIjoiYjcxNDgxYjQtNzJiZi00MTRiLTg4ZDMtODEyOTgxMzE1ZmE3IiwidCI6IjFiOGQ2YmQ5LTBhNDgtNDJhNy1iZTgyLTk3MTg5NDY1MDAzMCJ9"; // Substitua pelo link do seu relatório BI
+                document.querySelector(".login-container").style.display = "none"; // Oculta o formulário de login
+            } else {
+                errorMessage.style.display = "block";
+            }
+        }
+
+        function registerAccess(username) {
+            const SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbzr-Uo-w7_FqFHjHudg4Td0DPayvOAHFepYoehzqVUso0TLAY6HMTWX8PkEsgeS_8gkaA/exec"; // Substitua pela URL do seu Web App
+
+            fetch(SHEET_WEBHOOK_URL, {
+                method: "POST",
+                mode: "no-cors",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    username: username,
+                    timestamp: new Date().toLocaleString()
+                })
+            })
+            .then(response => response.json())
+            .then(data => console.log("Acesso registrado:", data))
+            .catch(error => console.error("Erro ao registrar acesso:", error));
+        }
+    </script>
 </body>
 </html>
