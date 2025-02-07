@@ -40,3 +40,4 @@ function registerAccess(username) {
     .then(data => console.log("Acesso registrado:", data))
     .catch(error => console.error("Erro ao registrar acesso:", error));
 }
+// funciona porfavor
