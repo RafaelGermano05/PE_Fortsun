@@ -55,4 +55,4 @@ const senhaInput = document.getElementById("password");
       toggleSenha.textContent = "👁️"; // Ícone de senha oculta
     }
   });
-//   Oxi n tá funcionando pq rapaz
+//   Oxi n tá funcionando pq rapaz, eu criei o código mas por algum motivo n setá subindo para minha página quando dou git
