@@ -55,3 +55,4 @@ const senhaInput = document.getElementById("password");
       toggleSenha.textContent = "👁️"; // Ícone de senha oculta
     }
   });
+//   Oxi n tá funcionando pq rapaz
