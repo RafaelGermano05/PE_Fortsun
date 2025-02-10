@@ -41,3 +41,17 @@ function registerAccess(username) {
     .catch(error => console.error("Erro ao registrar acesso:", error));
 }
 // funciona porfavor
+// adição de visualizador de senha do login!
+
+const senhaInput = document.getElementById("password");
+  const toggleSenha = document.getElementById("toggleSenha");
+
+  toggleSenha.addEventListener("click", () => {
+    if (senhaInput.type === "password") {
+      senhaInput.type = "text";
+      toggleSenha.textContent = "🙈"; // Ícone de senha visível
+    } else {
+      senhaInput.type = "password";
+      toggleSenha.textContent = "👁️"; // Ícone de senha oculta
+    }
+  });

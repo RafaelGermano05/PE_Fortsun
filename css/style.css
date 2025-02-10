@@ -54,14 +54,23 @@ h1 .img{
 .login-container input {
     width: 100%;
     padding: 10px;
-    margin: 10px 0;
+    margin: 10px 0 0 0;
     border: none;
-    border-radius: 5px;
-    font-size: 16px;
+    border-radius: 10px;
+    font-size: 17px;
     background-color: #dff0ff;
-    color: #081435;
+    color: #100646;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
+
+ .login-container #toggleSenha{
+    padding: 2px 20px;
+    width: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+
 
 .login-container button {
     width: 100%;
@@ -70,26 +79,30 @@ h1 .img{
     box-shadow: 0px 1px 6px #082749;
     color: #f3f4ff;
     border: none;
-    border-radius: 5px;
-    font-size: 16px;
+    border-radius: 10px;
+    font-size: 18px;
     cursor: pointer;
+    margin-top: 7.5px;
+    transition: background-color 0.15s ease-in-out 0.08s; 
 }
 
 .login-container button:hover {
-    background-color: #afabee;
+    background-color: #c8e7fa;
     color: #112841;
     font-style: unset;
-    box-shadow: 0px 1px 6px #6b6b94;
+    box-shadow: none;
+    font-size: 18.5px;
+    padding: 11px;
 }
 
 .error-message {
-    color: rgb(255, 136, 136);
+    color: rgb(255, 127, 127);
     margin-top: 10px;
     display: none;
 }
 
 .iframe-container {
-    display: none; /* Inicialmente oculto */
+     display: none; /* para começar oculto né */
     width: 100%;
     height: 100vh;
     margin-top: 20px;
