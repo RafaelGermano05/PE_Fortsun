@@ -17,7 +17,7 @@ function login() {
         registerAccess(username);
         
         iframeContainer.style.display = "block";
-        biIframe.src = "https://app.powerbi.com/view?r=eyJrIjoiYjcxNDgxYjQtNzJiZi00MTRiLTg4ZDMtODEyOTgxMzE1ZmE3IiwidCI6IjFiOGQ2YmQ5LTBhNDgtNDJhNy1iZTgyLTk3MTg5NDY1MDAzMCJ9"; // Substitua pelo link do seu relatório BI
+        biIframe.src = "https://app.powerbi.com/view?r=eyJrIjoiYjcxNDgxYjQtNzJiZi00MTRiLTg4ZDMtODEyOTgxMzE1ZmE3IiwidCI6IjFiOGQ2YmQ5LTBhNDgtNDJhNy1iZTgyLTk3MTg5NDY1MDAzMCJ9"; 
         document.querySelector(".login-container").style.display = "none"; // Oculta o formulário de login
     } else {
         errorMessage.style.display = "block";
@@ -25,7 +25,7 @@ function login() {
 }
 
 function registerAccess(username) {
-    const SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbzr-Uo-w7_FqFHjHudg4Td0DPayvOAHFepYoehzqVUso0TLAY6HMTWX8PkEsgeS_8gkaA/exec"; // Substitua pela URL do seu Web App
+    const SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbzr-Uo-w7_FqFHjHudg4Td0DPayvOAHFepYoehzqVUso0TLAY6HMTWX8PkEsgeS_8gkaA/exec"; 
 
     fetch(SHEET_WEBHOOK_URL, {
         method: "POST",
@@ -40,7 +40,6 @@ function registerAccess(username) {
     .then(data => console.log("Acesso registrado:", data))
     .catch(error => console.error("Erro ao registrar acesso:", error));
 }
-// funciona porfavor
 // adição de visualizador de senha do login!
 
 const senhaInput = document.getElementById("password");
@@ -56,3 +55,4 @@ const senhaInput = document.getElementById("password");
     }
   });
 //   Oxi n tá funcionando pq rapaz, eu criei o código mas por algum motivo n setá subindo para minha página quando dou git
+// Deu certo 
