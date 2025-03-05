@@ -1,9 +1,10 @@
 const validUsers = [
     "rafael", "daniel", "aline", "dougllas", "tomaz", "sarah", 
     "linaldo", "kesse", "rozelia", "aldenir", "pedro", "gabriel", 
-    "thiago", "thiago.correa", "guilherme", "brito"
+    "thiago", "thiago.correa", "guilherme", "brito", "hygor", "allex", "anita"
 ];
-const validPassword = "123456";
+
+const validPassword = "123456"
 
 function login() {
     const username = document.getElementById("username").value.trim();
@@ -11,6 +12,7 @@ function login() {
     const errorMessage = document.getElementById("error-message");
     const iframeContainer = document.getElementById("iframe-container");
     const biIframe = document.getElementById("bi-iframe");
+  
 
     if (validUsers.includes(username) && password === validPassword) {
         
