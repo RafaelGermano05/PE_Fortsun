@@ -1,7 +1,7 @@
 const validUsers = [
     "rafael", "daniel", "aline", "dougllas", "tomaz", "sarah", 
     "linaldo", "kesse", "rozelia", "aldenir", "pedro", "gabriel", 
-    "thiago", "thiago.correa", "guilherme", "brito", "hygor", "allex", "anita"
+    "thiago", "thiago.correa", "guilherme", "brito", "hygor", "allex", "anita", "lenise"
 ];
 
 const validPassword = "123456"
