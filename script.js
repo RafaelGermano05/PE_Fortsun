@@ -1,5 +1,5 @@
 const validUsers = [
-    "rafael", "daniel", "aline", "dougllas", "tomaz", "sarah", 
+    "rafael", "daniel", "aline", "dougllas", "sarah", 
     "linaldo", "kesse", "rozelia", "aldenir", "pedro", "gabriel", 
     "thiago", "thiago.correa", "guilherme", "brito", "hygor", "allex", "anita", "lenise"
 ];
