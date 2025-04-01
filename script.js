@@ -1,62 +1,142 @@
-const validUsers = [
-    "rafael", "daniel", "aline", "dougllas", "sarah", 
-    "linaldo", "kesse", "rozelia", "aldenir", "pedro", "gabriel", 
-  "thiago", "thiago.correa", "guilherme", "brito", "hygor", "allex", "anita",
-  "lenise", "raira"
-    
-];
 
-const validPassword = "123456"
+        // Aqui eu já começo com a biblioteca de partículas
+        function createParticles() {
+          const container = document.getElementById('particles');
+          const particleCount = 30;
+          
+          for (let i = 0; i < particleCount; i++) {
+              const particle = document.createElement('div');
+              particle.classList.add('particle');
+              
+              // Posição aleatória
+              const posX = Math.random() * 100;
+              const posY = Math.random() * 100;
+              
+              // Tamanho aleatório entre 1px e 3px
+              const size = Math.random() * 2 + 1;
+              
+              // Opacidade aleatória
+              const opacity = Math.random() * 0.5 + 0.1;
+              
+              // Tempo de animação aleatório
+              const duration = Math.random() * 20 + 10;
+              const delay = Math.random() * 5;
+              
+              particle.style.left = `${posX}%`;
+              particle.style.top = `${posY}%`;
+              particle.style.width = `${size}px`;
+              particle.style.height = `${size}px`;
+              particle.style.opacity = opacity;
+              particle.style.animation = `float ${duration}s ease-in-out ${delay}s infinite alternate`;
+              
+              container.appendChild(particle);
+          }
+      }
 
-function login() {
-    const username = document.getElementById("username").value.trim();
-    const password = document.getElementById("password").value.trim();
-    const errorMessage = document.getElementById("error-message");
-    const iframeContainer = document.getElementById("iframe-container");
-    const biIframe = document.getElementById("bi-iframe");
-  
+      // Animação de do exemplo da biblioteca de partículas em js
+      const style = document.createElement('style');
+      style.textContent = `
+          @keyframes float {
+              0% { transform: translate(0, 0); }
+              25% { transform: translate(10px, 10px); }
+              50% { transform: translate(20px, 5px); }
+              75% { transform: translate(10px, 15px); }
+              100% { transform: translate(0, 0); }
+          }
+      `;
+      document.head.appendChild(style);
 
-    if (validUsers.includes(username) && password === validPassword) {
-        
-        registerAccess(username);
-        
-        iframeContainer.style.display = "block";
-        biIframe.src = "https://app.powerbi.com/view?r=eyJrIjoiYjcxNDgxYjQtNzJiZi00MTRiLTg4ZDMtODEyOTgxMzE1ZmE3IiwidCI6IjFiOGQ2YmQ5LTBhNDgtNDJhNy1iZTgyLTk3MTg5NDY1MDAzMCJ9"; 
-        document.querySelector(".login-container").style.display = "none"; // Oculta o formulário de login
-    } else {
-        errorMessage.style.display = "block";
-    }
-}
+      document.addEventListener('DOMContentLoaded', function() {
+          createParticles();
+          
+          const validUsers = [
+              "rafael", "daniel", "aline", "dougllas", "sarah", 
+              "linaldo", "kesse", "rozelia", "aldenir", "pedro", "gabriel", 
+              "thiago", "thiago.correa", "guilherme", "brito", "hygor", "allex", "anita",
+              "lenise", "raira"
+          ];
+          
+          const validPassword = "123456";
+          
+          function performLogin() {
+              const username = document.getElementById("username").value.trim();
+              const password = document.getElementById("password").value.trim();
+              const errorMessage = document.getElementById("error-message");
+              const iframeContainer = document.getElementById("iframe-container");
+              const biIframe = document.getElementById("bi-iframe");
+              
+              if (validUsers.includes(username.toLowerCase()) && password === validPassword) {
+                  registerAccess(username);
+                  
+                  document.querySelector(".login-container").style.animation = "fadeOutUp 0.5s ease forwards";
+                  
+                  setTimeout(() => {
+                      iframeContainer.style.display = "block";
+                      biIframe.src = "https://app.powerbi.com/view?r=eyJrIjoiYjcxNDgxYjQtNzJiZi00MTRiLTg4ZDMtODEyOTgxMzE1ZmE3IiwidCI6IjFiOGQ2YmQ5LTBhNDgtNDJhNy1iZTgyLTk3MTg5NDY1MDAzMCJ9"; 
+                      document.querySelector(".login-container").style.display = "none";
+                  }, 500);
+                  
+              } else {
+                  // Animação de erro
+                  errorMessage.classList.add('show');
+                  document.getElementById("password").value = "";
+                  
 
-function registerAccess(username) {
-    const SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbzr-Uo-w7_FqFHjHudg4Td0DPayvOAHFepYoehzqVUso0TLAY6HMTWX8PkEsgeS_8gkaA/exec"; 
+                document.querySelector(".login-container").classList.add('animate__animated', 'animate__headShake');
+                  
 
-    fetch(SHEET_WEBHOOK_URL, {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            username: username,
-            timestamp: new Date().toLocaleString()
-        })
-    })
-    .then(response => response.json())
-    .then(data => console.log("Acesso registrado:", data))
-    .catch(error => console.error("Erro ao registrar acesso:", error));
-}
-// adição de visualizador de senha do login!
+                setTimeout(() => {
+                      document.querySelector(".login-container").classList.remove('animate__animated', 'animate__headShake');
+                  }, 1000);
+              }
+          }
+          
+          // Login ao clicar no botão
+          document.getElementById("loginBtn").addEventListener("click", performLogin);
+          
+          // Login ao pressionar Enter
+          document.addEventListener("keypress", function(e) {
+              if (e.key === "Enter") {
+                  performLogin();
+              }
+          });
+          
+          // para ver a senha ou não
+          const togglePassword = document.getElementById("toggleSenha");
+          const passwordInput = document.getElementById("password");
+          
+          togglePassword.addEventListener("click", function() {
+              if (passwordInput.type === "password") {
+                  passwordInput.type = "text";
+                  this.textContent = "🙈";
+              } else {
+                  passwordInput.type = "password";
+                  this.textContent = "👁️";
+              }
+              
+              
+              this.classList.add('animate__animated', 'animate__rubberBand');
+              setTimeout(() => {
+                  this.classList.remove('animate__animated', 'animate__rubberBand');
+              }, 1000);
+          });
+          
 
-const senhaInput = document.getElementById("password");
-  const toggleSenha = document.getElementById("toggleSenha");
-
-  toggleSenha.addEventListener("click", () => {
-    if (senhaInput.type === "password") {
-      senhaInput.type = "text";
-      toggleSenha.textContent = "🙈"; // Ícone de senha visível
-    } else {
-      senhaInput.type = "password";
-      toggleSenha.textContent = "👁️"; // Ícone de senha oculta
-    }
-  });
-//   Oxi n tá funcionando pq rapaz, eu criei o código mas por algum motivo n setá subindo para minha página quando dou git
-// Deu certo 
+          function registerAccess(username) {
+              console.log(`Acesso registrado para ${username} em ${new Date().toLocaleString()}`);
+              // implementação real eu usaria fetch
+          }
+          
+          // Efeito de hover 3D no container
+          const loginContainer = document.querySelector('.login-container');
+          
+          loginContainer.addEventListener('mousemove', (e) => {
+              const xAxis = (window.innerWidth / 2 - e.pageX) / 15;
+              const yAxis = (window.innerHeight / 2 - e.pageY) / 15;
+              loginContainer.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+          });
+          
+          loginContainer.addEventListener('mouseleave', () => {
+              loginContainer.style.transform = 'rotateY(0deg) rotateX(0deg)';
+          });
+      });

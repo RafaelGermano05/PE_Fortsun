@@ -4,18 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FORTSUN BI</title>
-    <link rel="shortcut icon" href="logofortsun.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="login-container">
-        <img src="logo-mercado-pago-icone-1024.png" alt="mercadopago-logo"> 
-        <h1> <a class="header">Parceiro Estratégico Performance 2025</a><br>Fortsun Login <a>Relatório</a> <a class="a">BI</a><img src="images-removebg-preview.png" class="img" alt=""></h1>
-        <input type="text" id="username" placeholder="Nome de usuário" required>
-        <input type="password" id="password" placeholder="Senha" required>
-        <button type="button" id="toggleSenha">👁️</button>
-        <!-- git mostrar senha  -->
-        <button onclick="login()">Entrar</button>
+    <div class="particles" id="particles"></div>
+    
+    <div class="login-container animate-in">
+        <div class="logo">
+            <img src="logo-mercado-pago-icone-1024.png" alt="mercadopago-logo"> 
+        </div>
+        <h1>
+            <span class="header">Parceiro Estratégico Performance 2025</span>
+            <span class="typing-effect">Fortsun Login <a>Relatório</a> <a class="a">BI</a></span>
+            <img src="images-removebg-preview.png" class="img" alt="">
+        </h1>
+        
+        <div class="input-group">
+            <input type="text" id="username" placeholder="Nome de usuário" required 
+                   autocomplete="username" class="animate-in" style="animation-delay: 0.2s">
+        </div>
+        
+        <div class="input-group">
+            <input type="password" id="password" placeholder="Senha" required 
+                   autocomplete="current-password" class="animate-in" style="animation-delay: 0.3s">
+            <button type="button" class="toggle-password" id="toggleSenha">👁️</button>
+        </div>
+        
+        <button id="loginBtn" class="login-button animate-in" style="animation-delay: 0.4s">Entrar</button>
         <div id="error-message" class="error-message">Usuário ou senha incorretos.</div>
     </div>
 
@@ -24,6 +40,5 @@
     </div>
 
     <script src="script.js"></script>
-    
 </body>
 </html>
