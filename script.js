@@ -53,7 +53,7 @@
               "rafael", "daniel", "aline", "dougllas", "sarah", 
               "linaldo", "kesse", "rozelia", "aldenir", "pedro", "gabriel", 
               "thiago", "thiago.correa", "guilherme", "brito", "hygor", "allex", "anita",
-              "lenise", "raira", "berg", "andre", "yara"
+              "lenise", "raira", "berg", "andre", "iara"
           ];
           
           const validPassword = "123456";
