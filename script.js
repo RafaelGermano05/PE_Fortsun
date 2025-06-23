@@ -72,7 +72,7 @@
                   
                   setTimeout(() => {
                       iframeContainer.style.display = "block";
-                      biIframe.src = "https://app.powerbi.com/view?r=eyJrIjoiYjcxNDgxYjQtNzJiZi00MTRiLTg4ZDMtODEyOTgxMzE1ZmE3IiwidCI6IjFiOGQ2YmQ5LTBhNDgtNDJhNy1iZTgyLTk3MTg5NDY1MDAzMCJ9"; 
+                      biIframe.src = "https://app.powerbi.com/view?r=eyJrIjoiODY1YmMzNzktODgzOS00YTlkLTkzMmEtNzA3ZWIzM2E0MjZiIiwidCI6IjNlZDU4NGFmLTQ1OTMtNDNlOS04MzIwLTg3Nzg4YTczMDkxYSJ9"; 
                       document.querySelector(".login-container").style.display = "none";
                   }, 500);
                   
