@@ -51,10 +51,10 @@
           
           const validUsers = [
               "rafael", "daniel", "aline", "dougllas", "sarah", 
-              "linaldo", "kesse", "rozelia", "aldenir", "pedro", "gabriel", 
-              "thiago", "thiago.correa", "guilherme", "brito", "hygor", "allex", "anita",
-              "lenise", "raira", "berg", "andre", "iara", "flaira", "vitoria", "pedro.rafael", "tiago", "ramom", "maykon", "euripedes", "diogo"
-                  
+               "kesse", "rozelia", "aldenir", "pedro", 
+              "thiago", "thiago.correa", "guilherme", "brito", "allex", "anita",
+              "lenise", "raira", "iara", "vitoria", "pedro.rafael", "tiago", "ramom", "maykon", "euripedes", "diogo",
+              "michella"
           ];
           
           const validPassword = "123456";
